@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router)
 
 app.get('/', (req: Request, res: Response) => {
-    res.send("Home route");
+    res.send("Home route after dockerization");
 })
 
 const server = http.createServer(app);
