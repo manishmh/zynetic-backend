@@ -4,7 +4,6 @@ import { Request, Response, Router } from "express";
 import jwt from "jsonwebtoken";
 import prisma from "../src/prisma";
 import { generateDummyProducts } from '../src/constant';
-import { Role } from '@prisma/client';
 
 dotenv.config();
 
