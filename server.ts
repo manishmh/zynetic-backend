@@ -1,11 +1,8 @@
 import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 import express, { Application, Request, Response } from 'express';
 import http from 'http';
 import cors from 'cors';
 import router from './routes'
-
-dotenv.config();
 
 const app: Application = express();
 
