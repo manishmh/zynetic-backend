@@ -11,7 +11,7 @@ declare global {
 
 export const tokenAuthorization = (req: Request, res: Response, next: NextFunction) => {
     try {
-        const accessToken = req.headers['Authorization'] as string;
+        const accessToken = req.cookies.accessToken
 
         if (!accessToken) {
             res.status(401).json({ message: "no access token" });

@@ -8,7 +8,7 @@ ProductsRouter.post('/', tokenAuthorization, async (req: Request, res: Response)
     try {
         const { name, description, category, price, rating } = req.body;
 
-        const newProduct = await prisma.product.create({
+        const product = await prisma.product.create({
             data: {
                 name,
                 description,
@@ -19,7 +19,7 @@ ProductsRouter.post('/', tokenAuthorization, async (req: Request, res: Response)
             },
         });
 
-        res.status(201).json(newProduct);
+        res.status(201).json(product);
     } catch (error) {
         res.status(500).json({ message: 'Unable to create product.' });
     }
