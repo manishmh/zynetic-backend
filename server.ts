@@ -2,13 +2,14 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Application, Request, Response } from 'express';
 import http from 'http';
+import { tokenAuthorization } from './middleware/authorization';
 import router from './routes';
 
 const app: Application = express();
 
 app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:3000", 
+  origin: true,
   credentials: true,               
 }));
 app.use(express.json());
@@ -18,9 +19,11 @@ app.use(express.urlencoded({ extended: true }));
 // main routes handled in /routes/index.ts
 app.use(router)
 
-app.get('/', (req: Request, res: Response) => {
-    res.send("Home route after dockerization");
-})
+app.get('/', tokenAuthorization, async (req: Request, res: Response) => {
+    res.json("home route")
+  });
+  
+
 
 const server = http.createServer(app);
 const port = 8080;

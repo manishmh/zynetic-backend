@@ -4,6 +4,7 @@ import { Request, Response, Router } from "express";
 import jwt from "jsonwebtoken";
 import prisma from "../src/prisma";
 import { generateDummyProducts } from '../src/constant';
+import { Role } from '@prisma/client';
 
 dotenv.config();
 
@@ -52,6 +53,7 @@ LoginRouter.post('/', async (req: Request, res: Response) => {
               id: user.id,
               email: user.email,
               name: user.name,
+              role: user.role,
             }
           });
         }
