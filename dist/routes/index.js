@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const register_1 = __importDefault(require("./register"));
+const login_1 = __importDefault(require("./login"));
+const refresh_token_1 = __importDefault(require("./refresh-token"));
+const products_1 = __importDefault(require("./products"));
+const validate_1 = __importDefault(require("./validate"));
+const logout_1 = __importDefault(require("./logout"));
+const router = (0, express_1.Router)();
+router.use("/register", register_1.default);
+router.use('/login', login_1.default);
+router.use('/logout', logout_1.default);
+router.use('/refresh-token', refresh_token_1.default);
+router.use('/products', products_1.default);
+router.use('/validate', validate_1.default);
+exports.default = router;
